@@ -14,7 +14,7 @@ public class ResListPage extends BasePage {
 
     private static final By expandCuisinesList = By.cssSelector("button[data-test-id='cuisinesCollapseToggle']");
     private static final By resListIndicator = By.className("RestaurantItem__Root-sc-1771gcw-0");
-//    private static final By cuisinePanel = By.cssSelector("div[class*='RestaurantItem__CuisineTypes']");
+    //    private static final By cuisinePanel = By.cssSelector("div[class*='RestaurantItem__CuisineTypes']");
     private static final By mutatedResList = By.className("cPVOqm");
     private static final By openSortListByButton = By.cssSelector("button[data-test-id='sortListByCollapseToggle']");
 
@@ -83,9 +83,8 @@ public class ResListPage extends BasePage {
     }
 
     @Step
-    public boolean waitForResListToAppear() {
+    public void waitForResListToAppear() {
         waitForElementToAppear(resListIndicator);
-        return isElementVisible(resListIndicator);
     }
 
     @Step
@@ -101,6 +100,7 @@ public class ResListPage extends BasePage {
 
     @Step
     public boolean isRecommendedSelectedByDefault() {
+        sleep(2);
         boolean isRecommendedSelected = false;
         java.util.List<WebElement> sortListByOptions = driver.findElements(By.cssSelector("ul[class*='hlKOqi']>li"));
         for (WebElement option : sortListByOptions) {
@@ -124,15 +124,9 @@ public class ResListPage extends BasePage {
 
     @Step
     public boolean validateRatingIsSelected() {
-        boolean isSortListSelected = false;
         java.util.List<WebElement> resCards = driver.findElements(By.cssSelector("div[data-test-id='restaurantTag-Rating']"));
         String firsCard = resCards.get(0).getText().replaceAll("(\\w+\\s){4}", "");
         String secondCard = resCards.get(1).getText().replaceAll("(\\w+\\s){4}", "");
-        double firsCardRating = Double.parseDouble(firsCard);
-        double secondCardRating = Double.parseDouble(secondCard);
-        if(firsCardRating>=secondCardRating){
-            isSortListSelected = true;
-        }
-       return isSortListSelected;
+        return Double.parseDouble(firsCard) >= Double.parseDouble(secondCard);
     }
 }
