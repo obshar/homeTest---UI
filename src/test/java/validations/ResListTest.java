@@ -51,7 +51,7 @@ public class ResListTest extends BaseTest {
         resListPage.waitForResListToAppear();
         Assert.assertTrue(resListPage.isURLCorrect("https://www.10bis.co.il/next/en/restaurants/search/"));
         resListPage.clickOpenSortListByButton();
-        resListPage.isRecommendedSelectedByDefault();
+        Assert.assertTrue(resListPage.isRecommendedSelectedByDefault());
         resListPage.waitForFiltersToBeClickable();
         resListPage.selectSortListByOption("Rating");
         resListPage.validateRatingIsSelected();
