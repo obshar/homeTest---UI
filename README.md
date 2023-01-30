@@ -10,6 +10,6 @@ Page Objects Pattern
 page object pattern is used to have reusable WebElements/small helper methods separated from actual test classes and give the opportunity to have nice structured and easily readable tests.
 
 Tested site - 
-Israel local 10bis.co.il (the local equivalent of https://www.lieferando.de/en/) English version. 
+Israel local(https://www.10bis.co.il/next/en/) (the local equivalent of https://www.lieferando.de/en/) English version. 
 
 
